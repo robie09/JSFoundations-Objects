@@ -75,7 +75,9 @@ function getChannelByName(channelName, channels) {
  ****************************************************************/
 function getChannelByVideoTitle(videoTitle, channels) {
   // Your code here
-  return channels.find((t) => channels.videos.some(t === videoTitle));
+  return channels.find((channel) =>
+    channel.videos.some((video) => video.title === videoTitle)
+  );
 }
 // console.log(channelHasVideo("The Universal S", channels));
 
@@ -89,8 +91,13 @@ function getChannelByVideoTitle(videoTitle, channels) {
  ****************************************************************/
 function searchChannels(query, channels) {
   // Your code here
-  return channels.filter((n) => n.description.includes(query));
+
+  return channels.filter(
+    (channel) =>
+      channel.name.includes(query) || channel.description.includes(query)
+  );
 }
+
 // console.log(searchChannels("the", channels))
 
 module.exports = {
